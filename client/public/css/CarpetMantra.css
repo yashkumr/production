@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.main-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mantra {
+    padding: 24px 0px;
+    background-color: #f4f4f7;
+}
+
+.CptMantra {
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+.CptMantra>div:nth-child(1) {
+
+    width: 60%;
+    padding: 11px;
+    margin: auto;
+    /* border: 1px solid green; */
+}
+
+.CptMantra>div:nth-child(1)>img {
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+
+.CptMantra>div:nth-child(2) {
+    width: 100%;
+    padding: 11px;
+}
+
+.CptMantra>div:nth-child(2)>p {
+    font-size: 14px;
+    padding: 5px;
+    line-height: 25px;
+    color: #333333;
+
+}
+
+.btn-mantra {
+    background-color: #ff6200;
+    color: #fff;
+    border: 0px !important;
+    outline: 0px !important;
+    text-align: center;
+    padding: 1px 10px 1px 10px;
+}
+
+.btn-mantra>a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.cards {
+    display: flex;
+    width: 49%;
+    margin: auto;
+    /* border: 1px solid red; */
+    text-align: center;
+    border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid #e3e3e3;
+    padding-top: 6px;
+    margin-bottom: 20px;
+
+}
+
+.cards>div {
+
+    width: 75%;
+
+    object-fit: contain;
+
+}
+
+.cards>div>img {
+    max-width: 60px;
+    width: 100%;
+    height: auto;
+}
+
+/* media query cards */
+@media only screen and (max-width:850px) {
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* media query */
+@media only screen and (max-width: 768px) {
+    .CptMantra {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.mantra-form {
+    width: 90%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    margin: auto;
+}
+
+.mantra-form>div {
+    width: 25%;
+}
+
+.mantra-form>div>form>input {
+
+    line-height: 13px;
+    width: 100%;
+    padding: 5px;
+    margin: 5px;
+}
+
+.mantra-p {
+    font-size: 13px;
+
+    font-weight: 500;
+
+}
+
+
+/* media query cards */
+@media only screen and (max-width: 768px) {
+    .mantra-form {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

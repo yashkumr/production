@@ -1,0 +1,158 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.bacground-position {
+    position: relative;
+    background: rgba(0, 0, 0, .5);
+    height: 20dvh;
+}
+
+.login-background::before {
+    content: "";
+    border-radius: 2px solid red;
+    width: 100%;
+    /* margin: auto; */
+    background-image: url("../../public/images/Auth/login.jpg");
+    height: 20dvh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.login-img {
+    color: black;
+}
+
+/* .registr-img{
+    background: url("../../../public/images/Auth/register.jpeg");
+} */
+.login-page {
+    display: flex;
+    width: 90%;
+
+}
+
+.login-page>div {
+    /* border: 1px solid green; */
+}
+
+.login-page>div:nth-child(2) {
+    width: 70%;
+    padding: 11px;
+}
+
+.login-page>div:nth-child(2)>p {
+    font-weight: 400;
+    line-height: 22px;
+
+}
+
+
+.account-back>button {
+    background-color: #ff6200;
+    /* color: #2c2b2b; */
+    transition: all 0.7s;
+    transform: scale(00.7s);
+    outline: 0px !important;
+    text-align: center;
+    text-shadow: 0px;
+    border: 0px;
+    padding: 5px 25px 5px 25px;
+    /* width: 90%; */
+
+}
+
+.account-back>button>a {
+    text-decoration: none;
+    color: #f0eeee;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.login-form {
+    /* background: #d8d6d6; */
+    box-shadow: 2px 6px 100px #e1cece;
+
+
+}
+
+.login-form>h4 {
+    text-align: center;
+    font-size: 17px;
+    color: #000;
+}
+
+.login-form>div {
+
+    font-size: 13px;
+    color: black;
+    outline: none;
+    padding-bottom: 15px;
+}
+
+.login-form>div>label>strong {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.login-form>div>input {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(180, 178, 178);
+    padding: 9px;
+    outline: 0;
+    border: 1px solid gray;
+    border-radius: 0px;
+}
+
+.login-back>button {
+    background-color: #fff;
+    /* color: #2c2b2b; */
+    transition: all 0.7s;
+    transform: scale(00.7s);
+    outline: 0px !important;
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+    width: 90%;
+}
+
+.login-back>button:hover {
+    background-color: #ff6200;
+    color: #fff;
+    border: 0px !important;
+    outline: 0px !important;
+    text-align: center;
+    padding: 10px;
+
+    width: 90%;
+}
+
+.login-back>button>a {
+    text-decoration: none;
+    color: #191919;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+/* media query */
+@media only screen and (max-width: 1050px) {
+
+    .login-page {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .account-back {
+        width: 90%;
+        margin: auto;
+
+    }
+
+}

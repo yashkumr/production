@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.registr-img {
+    color: black;
+}
+
+/* .registr-img{
+    background: url("../../../public/images/Auth/register.jpeg");
+} */
+.register-form {
+    background: #ffffff;
+    box-shadow: 2px 6px 100px #e1cece;
+
+
+}
+
+.register-form>h4 {
+    text-align: center;
+    font-size: 17px;
+    color: #000;
+}
+
+.register-form>div {
+
+    font-size: 13px;
+    color: black;
+    outline: none;
+    padding-bottom: 15px;
+}
+
+.register-form>div>label>strong {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.register-form>div>input {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(180, 178, 178);
+    padding: 9px;
+    outline: 0;
+    border: 1px solid gray;
+    border-radius: 0px;
+}
+
+.registr-back>button {
+    background-color: #fdfbf9;
+    color: #2c2b2b;
+
+    outline: 0px !important;
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+    width: 90%;
+}
+.registr-back>button:hover{
+    background-color: #ff6200;
+    color: #fff;
+    border: 0px !important;
+    outline: 0px !important;
+    text-align: center;
+    padding: 10px;
+    width: 90%;
+}
+
+.registr-back>button>a {
+    text-decoration: none;
+    color: #191919;
+    font-weight: 400;
+    font-size: 15px;
+}

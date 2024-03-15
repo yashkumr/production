@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.fress {
+    display: flex;
+    width: 90%;
+    gap: 5px;
+    margin: auto;
+    margin-top: 3px;
+    /* border: 2px solid green; */
+}
+
+.fress>div {
+    display: flex;
+    width: 95%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    gap: 5px;
+}
+
+.fress>div>img {
+
+    height: auto;
+    width: 32px;
+    vertical-align: middle;
+}
+
+.fress>div>div {
+    padding: 4px;
+    margin: 0;
+    font-size: 13px;
+}
+
+.fress>div>div>span:nth-child(1) {
+    color: black;
+    font-weight: 500;
+
+}
+
+/* media query */
+@media only screen and (max-width:800px) {
+    .fress {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+
+}
+
+/* dynmaic product css */
+.dProduct {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    background: #fff;
+
+}
+
+.d-item {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(77, 20, 140, 0.2), 0 6px 20px 0 rgba(77, 20, 140, 0.19);
+}
+
+.d-item>div {
+    width: 100%;
+    margin: auto;
+
+}
+
+.d-img {
+    width: 100%;
+    transition: all .7s ease-in-out;
+    margin-top: 75px;
+}
+
+.d-item:hover .imageWrapper img {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.dProduct .d-item:hover .imageWrapper img {
+    -webkit-transform: scale(2);
+    transform: scale(2);
+}
+
+
+.d-item:hover .caption p,
+.d-item:hover .caption h5 {
+    color: #fff;
+    text-shadow: 4px 2px 6px #000;
+}
+
+.d-heading {
+    width: 50%;
+    margin: 2rem auto 2rem auto;
+    text-align: center;
+    font-size: 25px;
+    line-height: 26px;
+    text-transform: capitalize;
+    font-weight: 700;
+    padding-bottom: 4px;
+    border-bottom: 3px solid #ff6200;
+    transition: color .3s ease-in-out;
+
+}
+
+.caption {
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    margin-right: 15px;
+    z-index: 55;
+    padding: 0;
+    transition: all .5s ease-in-out;
+}
+
+.d-item:hover .caption>p {
+    color: #fff;
+    font-weight: bold;
+    z-index: 55;
+
+}
+
+.caption>h5 {
+    font-size: 22px;
+    line-height: 26px;
+    text-transform: capitalize;
+    color: #ff6200;
+    margin-bottom: 2px;
+    font-weight: 700;
+    padding-bottom: 3px;
+    border-bottom: 2px solid;
+    transition: color .3s ease-in-out;
+}
+
+.caption>p {
+    display: inline-block;
+    font-size: 13px;
+    line-height: 1.4;
+    transition: color .3s ease-in-out;
+    padding-top: 7px;
+    transition: all 0.6s;
+}
+
+.masking {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(71, 186, 193, 0);
+    opacity: 0;
+
+    transition: all .3s ease-in-out;
+}
+
+.d-item:hover .masking {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(71, 186, 193, 0);
+    opacity: 1;
+    z-index: 2;
+    cursor: pointer;
+
+}
+
+.viewBtn {
+   
+    position: absolute;
+   
+    height: 40px;
+    width: 120px;
+    bottom: 26px;
+    left: 7.5rem;
+    border: 3px solid #ff6200;
+    font-weight: normal;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 14px;
+    transition: all .3s ease-in-out;
+    box-shadow: 0;
+    border-radius: 0;
+    padding: 0;
+    line-height: 36px;
+    background-color: #ff6200;
+    color: #fff;
+}
+
+/* border */
+.d-item::after,
+.d-item::before {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    opacity: 0;
+    z-index: 1;
+    transition: all 0.8s;
+}
+
+.d-item::before {
+    bottom: 5%;
+    left: 5%;
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+}
+
+.d-item::after {
+    top: 4.5%;
+    right: 4.4%;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+}
+
+.d-item:hover::after,
+.d-item:hover:before {
+    opacity: 1;
+    width: 90%;
+    height: 90%;
+}
+
+/* end border */

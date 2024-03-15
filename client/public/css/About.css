@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.about {
+    width: 80%;
+    /* border: 1px solid red; */
+    margin: auto;
+    margin-top: 5px;
+    font-size: 12px;
+    padding: 5px;
+    line-height: 21px;
+    background: #e4e2e2;
+}
+
+.about-para {
+
+    width: 80%;
+    /* border: 1px solid red; */
+    margin: 15px auto 15px auto;
+}
+
+.about-para>p {
+    padding: 4px;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 490;
+}

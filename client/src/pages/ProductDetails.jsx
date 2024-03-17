@@ -116,7 +116,14 @@ const ProductDetails = () => {
             </p>
             <hr style={{ color: "red", background: "red" }} />
             <div>
-              <button className="viewbtn mt-1" onClick={() => dispatch(addToCart(product)) && navigate('/product/checkout') }>ADD TO CART</button>
+              <button
+                className="viewbtn mt-1"
+                onClick={() =>
+                  dispatch(addToCart(product)) && navigate("/product/shipping")
+                }
+              >
+                ADD TO CART
+              </button>
             </div>
           </div>
         </div>

@@ -14,6 +14,8 @@ const CategoryProduct = () => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
 
+  const [radio, setRadio] = useState([]);
+
   useEffect(() => {
     if (params?.slug) getPrductsByCat();
   }, [params?.slug]);
@@ -28,6 +30,30 @@ const CategoryProduct = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (!radio.length) getPrductsByCat();
+  }, [ radio.length]);
+
+
+
+  useEffect(() => {
+    if ( radio.length) filterProduct();
+  }, [radio]);
+
+    //get filterd product
+    const filterProduct = async () => {
+      try {
+        const { data } = await axios.post("/api/v1/product/product-filters", {
+          
+          radio,
+        });
+        setProducts(data?.products);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
 
   return (
     <>
@@ -87,7 +113,7 @@ const CategoryProduct = () => {
           <h6 className="text-center">{products?.length} result found </h6>
           <div className="categoryProduct">
             <div className="">
-              <h4 className="text-center mt-5">Filter By Price Range</h4>
+              <h4 className="fw-normal mt-5">Filter By Price </h4>
               <div className="d-flex flex-column ">
                 <Radio.Group onChange={(e) => setRadio(e.target.value)}>
                   {Prices?.map((p) => (
@@ -99,14 +125,27 @@ const CategoryProduct = () => {
               </div>
 
               <div className="">
-                <h4 className="text-center mt-5">Sort By Trending</h4>
+                <h4 className=" mb-2 mt-5 fw-normal">Sort By Trending</h4>
                 <select
-                  className="form-select text-shadow"
+                  style={{ width: "15rem" }}
+                  className="form-select text-shadow-none"
                   aria-label="Default select example"
                 >
                   <option value={1}>Latest</option>
                   <option value={2}>Oldest</option>
                 </select>
+              </div>
+
+              <div
+                className="d-flex flex-column mt-5"
+                style={{ width: "14rem" }}
+              >
+                <button
+                  className="btn btn-danger"
+                  onClick={() => window.location.reload()}
+                >
+                  RESET FILTER
+                </button>
               </div>
             </div>
 

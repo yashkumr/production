@@ -29,6 +29,8 @@ import PaymentSuccess from "./pages/PaymentSuccess.jsx";
 import AdminOrders from "./pages/Admin/AdminOrders.jsx";
 import UserOrder from "./pages/User/UserOrder.jsx";
 import UserProfile from "./pages/User/UserProfile.jsx";
+import Shipping from "./pages/Shipping.jsx";
+import Search from "./pages/Search.jsx";
 
 function App() {
   return (
@@ -40,13 +42,14 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-
-        <Route path="/product/checkout" element={<Checkout />} />
+        
+        <Route path="/product/shipping" element={<Shipping/>}/>        <Route path="/product/checkout" element={<Checkout />} />
         <Route path="/paymentsuccess" element={<PaymentSuccess />} />
 
         <Route path="/category/:slug" element={<CategoryProduct />} />
         <Route path="/product/:slug" element={<ProductDetails />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/search" element={<Search />} />
 
         <Route path="/dashboard" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDashboard />} />

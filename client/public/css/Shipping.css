@@ -1,0 +1,340 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.shipping-wrapper:before {
+    content: '';
+    position: absolute;
+    background: rgba(10, 9, 9, 0.5);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.shipping-wrapper {
+    background-image: url("../../../public/images/User/userBanner.jpg");
+    background-color: #f7f7f7;
+    color: #fff;
+    padding: 58px 0 55px;
+    text-align: center;
+    /* background-image: url(../images/shop-category.jpg); */
+    background-size: cover;
+    background-repeat: repeat-y;
+    position: relative;
+    background-position: center center;
+    background-attachment: scroll;
+}
+
+.shipping-wrapper>div>h5 {
+    color: #fff;
+    font-weight: 500;
+    font-size: 29px;
+    padding: 0;
+    border: none;
+    display: block;
+    margin: 0;
+    position: relative;
+}
+
+/* banner bootom */
+
+.main-info {
+    margin: 5px 0px 30px 0px;
+    background-color: #f6f6f8;
+    color: #fff;
+    font-size: 13px;
+    padding: 2px;
+
+}
+
+.quick-info {
+    width: 80%;
+    margin: auto;
+
+}
+
+.quick-info>ul {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    font-size: 13px;
+}
+
+.quick-info>ul>li {
+    list-style: none;
+    margin: 2px;
+
+}
+
+.quick-info>ul>li>a {
+
+    color: #121314;
+    text-decoration: none;
+}
+
+.quick-info>ul>li>a>span {
+    font-size: 9px;
+    padding: 3px;
+}
+
+/* Start ProgressBar */
+
+.opc-progress-bar {
+
+    margin-top: 20px;
+
+    margin: 0 0 20px;
+    counter-reset: i;
+    font-size: 0;
+}
+
+.opc-progress-bar .opc-progress-bar-item {
+    margin: 0 0 10px;
+    width: 380px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    vertical-align: top;
+}
+
+.opc-progress-bar .opc-progress-bar-item._active:before {
+    background: #eb5202;
+}
+
+.opc-progress-bar .opc-progress-bar-item:before {
+    background: #c2c2c2;
+    top: 19px;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -o-transition: all .3s;
+    content: '';
+    height: 7px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.opc-progress-bar .opc-progress-bar-item._active>span {
+    color: #eb5202;
+}
+
+.opc-progress-bar .opc-progress-bar-item>span {
+    display: inline-block;
+    padding-top: 45px;
+    width: 100%;
+    word-wrap: break-word;
+    color: #c2c2c2;
+    font-size: 16px;
+}
+
+.opc-progress-bar .opc-progress-bar-item._active>span:before {
+    background: #eb5202;
+}
+
+.opc-progress-bar .opc-progress-bar-item>span:before {
+    background: #c2c2c2;
+    height: 38px;
+    margin-left: -19px;
+    width: 38px;
+    content: '';
+    top: 0;
+}
+
+.opc-progress-bar .opc-progress-bar-item>span:after,
+.opc-progress-bar .opc-progress-bar-item>span:before {
+    left: 50%;
+    position: absolute;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -o-transition: all .3s;
+}
+
+.opc-progress-bar .opc-progress-bar-item._active>span:after {
+    color: #eb5202;
+}
+
+.opc-progress-bar .opc-progress-bar-item>span:after {
+    background: #fff;
+    height: 26px;
+    margin-left: -13px;
+    top: 6px;
+    width: 26px;
+    content: counter(i);
+    counter-increment: i;
+    color: #333;
+    font-size: 15px;
+    line-height: 26px;
+    color: #c2c2c2;
+}
+
+.checkout-container .authentication-wrapper {
+    margin-top: 2px;
+    float: right;
+    max-width: 50%;
+    position: relative;
+    z-index: 1;
+    border-bottom: 0;
+    margin-bottom: 0;
+}
+
+.authentication-wrapper .action-auth-toggle {
+    font-size: 13px;
+    color: #fff;
+    border: 1px solid #ff6200;
+    background-color: #ff6200;
+    margin-top: 10px;
+    padding: 6px 15px;
+    font-weight: 400;
+    text-align: center;
+    margin-right: 0;
+    min-width: 120px;
+    border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -o-border-radius: 40px;
+}
+
+
+/* end progressBar */
+
+/* Shipping from css */
+.shipping-title {
+    background: #ff6200;
+    padding: 5px 20px;
+    border-radius: 0 5px 0 0;
+    position: relative;
+    /* margin: -19px -22px 10px; */
+    font-size: 19px;
+    color: #fff;
+    width: 99%;
+    margin: auto;
+}
+
+.shipping-title::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: -9px;
+    border: 9px solid transparent;
+    border-right-color: #ce9bb4;
+    z-index: -1;
+    border-right-width: 13px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.shipping-img {
+    color: rgb(52, 50, 50);
+}
+
+/* .registr-img{
+    background: url("../../../public/images/Auth/register.jpeg");
+} */
+.register-form {
+    background: #ffffff;
+    box-shadow: 2px 6px 100px #e1cece;
+
+
+}
+
+.register-form>h4 {
+    text-align: center;
+    font-size: 17px;
+    color: #000;
+}
+
+.register-form>div {
+
+    font-size: 13px;
+    color: black;
+    outline: none;
+    padding-bottom: 15px;
+}
+
+.register-form>div>label>strong {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.register-form>div>input {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(180, 178, 178);
+    padding: 9px;
+    outline: 0;
+    border: 1px solid gray;
+    border-radius: 0px;
+}
+
+.shipping-next>button {
+
+    outline: 0px !important;
+    text-align: center;
+    outline: 0px;
+    padding: 4px;
+    width: 100%;
+    background-color: #fff;
+    outline: 0px;
+    border: 0px;
+    transition: all 0.6s ease-in-out;
+}
+
+.shipping-next>button:hover {
+
+    color: #fff;
+    border: 0px !important;
+    outline: 0px !important;
+    text-align: center;
+
+
+}
+
+.shipping-next>button>a {
+    background: #ff6200;
+    text-decoration: none;
+    border-radius: 22px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 7px 45px 7px 45px;
+    float: left;
+
+}
+
+.table-shipping {
+  
+    width: 95%;
+    margin: auto;
+    color: black;
+}
+.table-shipping>thead>tr>th{
+    color: #2b2b2b;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #eaeaea;
+    vertical-align: middle;
+    padding: 14px 30px 11px;
+    border-bottom: none;
+}
+.table-shipping>tbody>tr>td{
+    border: 1px solid #eaeaea;
+    padding: 14px 30px 11px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}

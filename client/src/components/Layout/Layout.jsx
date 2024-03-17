@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import { Helmet } from "react-helmet";
 import Footer from "./Footer";
 import CptMantra from "./CptMantra.jsx";
+import SlickSlider from "./SlickSlider.jsx";
 
 
 const Layout = ({ children, title, description, keywords, author }) => {
@@ -23,6 +24,7 @@ const Layout = ({ children, title, description, keywords, author }) => {
         <Toaster />
         {children}
       </main>
+      <SlickSlider/>
       <CptMantra/>
       
 

@@ -45,10 +45,15 @@ const CreateProduct = () => {
       productData.append("quantity", quantity);
       productData.append("photo", photo);
       productData.append("category", category);
+
+      // for (let i = 0; i < photo.length; i++) {
+      //   productData.append(`file${i + 1}`,photo[i]);
+      // }
       const { data } = axios.post(
         "/api/v1/product/create-product",
         productData
       );
+      console.log(productData);
       if (data?.success) {
         toast.error(data?.message);
       } else {
@@ -90,6 +95,7 @@ const CreateProduct = () => {
                     {photo ? photo.name : "Upload Photo"}
                     <input
                       type="file"
+                      multiple
                       className=""
                       name="photo"
                       accept="image/*"
@@ -101,12 +107,12 @@ const CreateProduct = () => {
                 <div className="mb-3">
                   {photo && (
                     <div className="text-center">
-                      <img
+                      {/* <img
                         src={URL.createObjectURL(photo)}
                         alt="product_photo"
                         height={"200px"}
                         className="img img-responsive"
-                      />
+                      /> */}
                     </div>
                   )}
                 </div>

@@ -31,6 +31,7 @@ import UserOrder from "./pages/User/UserOrder.jsx";
 import UserProfile from "./pages/User/UserProfile.jsx";
 import Shipping from "./pages/Shipping.jsx";
 import Search from "./pages/Search.jsx";
+import BestSeller from "./pages/Admin/BestSeller.jsx";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
           <Route path="admin/create-category" element={<CreateCategory />} />
           <Route path="admin/create-product" element={<CreateProduct />} />
           <Route path="admin/products" element={<Products />} />
+          <Route path="admin/seller" element={<BestSeller/>} />
           <Route path="admin/product/:slug" element={<UpdateProducts />} />
           <Route path="admin/all-users" element={<AllUsers />} />
           <Route path="admin/admin-profile" element={<AdminProfile />} />

@@ -55,3 +55,24 @@
     border-radius: 4px;
 
 }
+.viewBtn {
+   
+    position: absolute;
+   
+    height: 40px;
+    width: 120px;
+    bottom: 26px;
+    left: 7.5rem;
+    border: 3px solid #ff6200;
+    font-weight: normal;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 14px;
+    transition: all .3s ease-in-out;
+    box-shadow: 0;
+    border-radius: 0;
+    padding: 0;
+    line-height: 36px;
+    background-color: #ff6200;
+    color: #fff;
+}

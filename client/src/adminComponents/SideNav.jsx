@@ -100,6 +100,14 @@ const SideNav = () => {
                     <p>Products</p>
                   </a>
                 </li>
+                <li className="nav-item">
+                  <a href="/dashboard/admin/seller" className="nav-link">
+                    <span className="p-2">
+                      <FaProductHunt />{" "}
+                    </span>
+                    <p>Create Seller</p>
+                  </a>
+                </li>
 
                 <li className="nav-item">
                   <a href="#" className="nav-link">

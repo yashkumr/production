@@ -13,6 +13,7 @@ import { useSearch } from "../../context/SearchContext.jsx";
 import axios from "axios";
 const Header = () => {
   const [auth, setAuth] = useAuth();
+  
   const [values, setValues] = useSearch();
 
   const navigate = useNavigate();

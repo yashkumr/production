@@ -1,7 +1,6 @@
 import Razorpay from "razorpay";
 import crypto from "crypto";
 
-import { instance } from "../index.js";
 import orderModel from "../modal/orderModel.js";
 import { Payment } from "../modal/paymentModel.js";
 

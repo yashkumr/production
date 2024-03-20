@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import categoryRoute from "./routes/categoryRoute.js";
 import productRoutes from "./routes/productRoutes.js";
-import Razorpay from "razorpay";
+
 import paymentRoutes from "./routes/paymentRoutes.js";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -45,10 +45,10 @@ app.use("*", function (req, res) {
 
 const PORT = process.env.PORT || 8080;
 
-export const instance = new Razorpay({
-  key_id: process.env.RAZORPAY_API_KEY,
-  key_secret: process.env.RAZORPAY_API_SECRET,
-});
+// export const instance = new Razorpay({
+//   key_id: process.env.RAZORPAY_API_KEY,
+//   key_secret: process.env.RAZORPAY_API_SECRET,
+// });
 
 app.listen(PORT, () => {
   console.log(

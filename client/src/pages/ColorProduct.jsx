@@ -8,33 +8,18 @@ import { IoIosArrowForward } from "react-icons/io";
 import { FaRegCalendarCheck } from "react-icons/fa";
 import { Prices } from "../components/extraComponent/Prices.jsx";
 
-const CategoryProduct = () => {
+const ColorProduct = () => {
   const params = useParams();
   const navigate = useNavigate();
-
+  const [products, setProducts] = useState([]);
+  const [filterProducts, setFilterProducts] = useState([]);
+  const [category, setCategory] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState([]);
+
+  const [color, setColor] = useState([]);
 
   const [radio, setRadio] = useState([]);
-
-  useEffect(() => {
-     getPrductsByCat();
-  }, []);
-
-  const getPrductsByCat = async () => {
-    try {
-      const { data } = await axios.get(
-        `/api/v1/product/product-category/${params.slug}`
-      );
-
-      setProducts([...products, ...data?.products]);
-      setCategory(data?.category);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   //get all cat
   const getAllCategory = async () => {
@@ -52,6 +37,23 @@ const CategoryProduct = () => {
     getAllCategory();
   }, []);
 
+  useEffect(() => {
+    if (params?.slug) getProductByCol();
+  }, [params?.slug]);
+
+  const getProductByCol = async () => {
+    try {
+      const { data } = await axios.get(
+        `/api/v1/product/product-color/${params.slug}`
+      );
+
+      setProducts(data?.products);
+      setColor(data?.color);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // filter by cat
   const handleFilter = (value, id) => {
     let all = [...checked];
@@ -64,7 +66,7 @@ const CategoryProduct = () => {
   };
 
   useEffect(() => {
-    if (!checked.length || !radio.length) getPrductsByCat();
+    if (!checked.length || !radio.length) getProductByCol();
   }, [checked.length, radio.length]);
 
   useEffect(() => {
@@ -74,11 +76,11 @@ const CategoryProduct = () => {
   //get filterd product
   const filterProduct = async () => {
     try {
-      const { data } = await axios.post(`/api/v1/product/product-filters`, {
+      const { data } = await axios.post("/api/v1/product/product-filters", {
         checked,
         radio,
       });
-      setProducts(data?.products);
+      setFilterProducts(data?.products);
     } catch (error) {
       console.log(error);
     }
@@ -100,7 +102,7 @@ const CategoryProduct = () => {
               </li>
               <li>
                 <NavLink to="#">
-                  {category?.name}
+                  {color?.name}
                   <span>
                     <IoIosArrowForward />
                   </span>
@@ -123,7 +125,7 @@ const CategoryProduct = () => {
 
         <div className="cat-banner">
           <div className="banner-content">
-            <h1 className="text-center"> {category?.name}</h1>
+            <h1 className="text-center"> {color?.name}</h1>
           </div>
           <div>
             <img src="../../public/images/Category/1.jpg" alt="banner" />
@@ -137,12 +139,58 @@ const CategoryProduct = () => {
           </div>
         </div>
 
+        <div className="dProduct">
+              {filterProducts?.map((p) => (
+                <>
+                  <div className="card m-2" key={p._id}>
+                    <img
+                      src={`/api/v1/product/product-photo/${p._id}`}
+                      className="card-img-top"
+                      alt={p.name}
+                    />
+                    <div className="card-body">
+                      <div className="card-name-price">
+                        <h5 className="card-title m-1 p-1">{p.name}</h5>
+                        <p className="card-title m-1 p-1 card-price">
+                          <span>&#8377;</span> {p.price}
+                        </p>
+                      </div>
+                      <p className="card-text ">
+                        {p.description.substring(0, 60)}...
+                      </p>
+                      <div className="card-name-price">
+                        <button
+                          className="btn btn-warning ms-1"
+                          onClick={() => navigate(`/product/${p.slug}`)}
+                        >
+                          Buy Now
+                        </button>
+                        {/* <button
+                      className="btn btn-dark ms-1"
+                      onClick={() => {
+                        setCart([...cart, p]);
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify([...cart, p])
+                        );
+                        toast.success("Item Added to cart");
+                      }}
+                    >
+                      ADD TO CART
+                    </button> */}
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ))}
+            </div>
+
         <div className="container mt-3 ">
-          <h4 className="text-center">Category - {category?.name}</h4>
+          <h4 className="text-center">Category - {color?.name}</h4>
           <h6 className="text-center">{products?.length} result found </h6>
           <div className="categoryProduct">
             <div className="">
-              <h4 className="font-bw-normal">Filter By Categories</h4>
+              <h4 className="text-center">Filter By Categories</h4>
               <div className="d-flex flex-column">
                 {categories?.map((c) => (
                   <Checkbox
@@ -177,6 +225,8 @@ const CategoryProduct = () => {
                 </button>
               </div>
             </div>
+
+           
 
             {/* getCategories */}
             <div className="dProduct">
@@ -247,4 +297,4 @@ const CategoryProduct = () => {
   );
 };
 
-export default CategoryProduct;
+export default ColorProduct;

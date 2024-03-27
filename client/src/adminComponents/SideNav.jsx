@@ -82,6 +82,25 @@ const SideNav = () => {
                 </li>
                 <li className="nav-item">
                   <a
+                    href="/dashboard/admin/create-color"
+                    className="nav-link"
+                  >
+                    <span className="p-2">
+                      <FaProductHunt />{" "}
+                    </span>
+                    <p>Create Color</p>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a href="/dashboard/admin/create-size" className="nav-link">
+                    <span className="p-2">
+                      <FaProductHunt />{" "}
+                    </span>
+                    <p>Create Size</p>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
                     href="/dashboard/admin/create-product"
                     className="nav-link"
                   >
@@ -100,15 +119,7 @@ const SideNav = () => {
                     <p>Products</p>
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a href="/dashboard/admin/seller" className="nav-link">
-                    <span className="p-2">
-                      <FaProductHunt />{" "}
-                    </span>
-                    <p>Create Seller</p>
-                  </a>
-                </li>
-
+                
                 <li className="nav-item">
                   <a href="#" className="nav-link">
                     <span className="p-2">

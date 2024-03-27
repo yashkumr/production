@@ -8,7 +8,8 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import categoryRoute from "./routes/categoryRoute.js";
 import productRoutes from "./routes/productRoutes.js";
-
+import sizeRoute from "./routes/sizeRoute.js"
+import colorRoute from "./routes/colorRoute.js"
 import paymentRoutes from "./routes/paymentRoutes.js";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -30,6 +31,8 @@ app.use(express.static(path.join(__dirname, "./client/dist")));
 //routing
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/category", categoryRoute);
+app.use("/api/v1/color", colorRoute);
+app.use("/api/v1/size", sizeRoute);
 app.use("/api/v1/product", productRoutes);
 
 // Razorpay payment Gateway

@@ -17,8 +17,9 @@ const BestSeller = () => {
   const [quantity, setQuantity] = useState("");
   const[feature, setFeature] = useState("");
   const [shipping, setShipping] = useState("");
-  const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+
+  const[color, setColor] = useState([]);
 
   const [photo, setPhoto] = useState("");
 
@@ -38,6 +39,7 @@ const BestSeller = () => {
   useEffect(() => {
     getAllCategory();
   }, []);
+
 
   const handleCreate = async (e) => {
     e.preventDefault();
@@ -94,6 +96,26 @@ const BestSeller = () => {
                   </Option>
                 ))}
               </Select>
+
+              <div className="mb-3">
+                <Select
+                bordered={false}
+                placeholder="enter color"
+                size="large"
+                showSearch
+                className="form-select mb-3"
+                onChange={(value)=>{
+                  setCategory(value)
+                }}
+                >
+                  {color?.map((c)=>(
+                    <Option key={c._id} value={c._id}>
+                      {c.name}
+                    </Option>
+                  ))}
+
+                </Select>
+              </div>
               <div className="mb-3">
                 <label className="btn btn-outline-secondary col-md-12">
                   {photo ? photo.name : "Upload Photo"}

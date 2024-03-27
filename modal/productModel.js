@@ -10,6 +10,20 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    productId: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    material: {
+      type: String,
+      required: true,
+    },
+    stock: {
+      type: String,
+      required: true,
+    },
+    
     description: {
       type: String,
       required: true,
@@ -18,9 +32,27 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    oldPrice: {
+      type: String,
+      required: true,
+    },
+    color: {
+      type: mongoose.ObjectId,
+      ref: "Color",
+      required: true,
+    },
+    size: {
+      type: mongoose.ObjectId,
+      ref: "Size",
+      required: true,
+    },
     category: {
       type: mongoose.ObjectId,
       ref: "Category",
+      required: true,
+    },
+    totalQuantity: {
+      type: String,
       required: true,
     },
     quantity: {

@@ -1,26 +1,58 @@
-
 import fs from "fs";
 import slugify from "slugify";
 import productModel from "../modal/productModel.js";
 import categoryModal from "../modal/categoryModal.js";
+import colorModel from "../modal/colorModel.js";
+import sizeModel from "../modal/sizeModel.js";
 
 export const createProductController = async (req, res) => {
   try {
-    const { name, description, price, category, quantity, shipping } =
-      req.fields;
+    const {
+      name,
+      productId,
+      material,
+      stock,
+      shipping,
+      description,
+      oldPrice,
+      price,
+      totalQuantity,
+      quantity,
+      color,
+      size,
+      category,
+    } = req.fields;
     const { photo } = req.files;
     //alidation
     switch (true) {
       case !name:
         return res.status(500).send({ error: "Name is Required" });
+      case !productId:
+        return res.status(500).send({ error: "productId is Required" });
+      case !material:
+        return res.status(500).send({ error: "material is Required" });
+      case !stock:
+        return res.status(500).send({ error: "stock is Required" });
+      case !shipping:
+        return res.status(500).send({ error: "shipping is Required" });
+      case !oldPrice:
+        return res.status(500).send({ error: "oldPrice is Required" });
       case !description:
         return res.status(500).send({ error: "Description is Required" });
+
       case !price:
         return res.status(500).send({ error: "Price is Required" });
-      case !category:
-        return res.status(500).send({ error: "Category is Required" });
+      case !totalQuantity:
+        return res.status(500).send({ error: "totalQuantity is Required" });
       case !quantity:
         return res.status(500).send({ error: "Quantity is Required" });
+      case !size:
+        return res.status(500).send({ error: "size is Required" });
+      case !color:
+        return res.status(500).send({ error: "color is Required" });
+      case !category:
+        return res.status(500).send({ error: "category is Required" });
+
       case photo && photo.size > 1000000:
         return res
           .status(500)
@@ -134,21 +166,52 @@ export const deleteProductController = async (req, res) => {
 //upate products
 export const updateProductController = async (req, res) => {
   try {
-    const { name, description, price, category, quantity, shipping } =
-      req.fields;
+    const {
+      name,
+      productId,
+      material,
+      stock,
+      shipping,
+      description,
+      oldPrice,
+      price,
+      totalQuantity,
+      quantity,
+      color,
+      size,
+      category,
+    } = req.fields;
     const { photo } = req.files;
-    //validation
+    //alidation
     switch (true) {
       case !name:
         return res.status(500).send({ error: "Name is Required" });
+      case !productId:
+        return res.status(500).send({ error: "productId is Required" });
+      case !material:
+        return res.status(500).send({ error: "material is Required" });
+      case !stock:
+        return res.status(500).send({ error: "stock is Required" });
+      case !shipping:
+        return res.status(500).send({ error: "shipping is Required" });
+      case !oldPrice:
+        return res.status(500).send({ error: "oldPrice is Required" });
       case !description:
         return res.status(500).send({ error: "Description is Required" });
+
       case !price:
         return res.status(500).send({ error: "Price is Required" });
-      case !category:
-        return res.status(500).send({ error: "Category is Required" });
+      case !totalQuantity:
+        return res.status(500).send({ error: "totalQuantity is Required" });
       case !quantity:
         return res.status(500).send({ error: "Quantity is Required" });
+      case !size:
+        return res.status(500).send({ error: "size is Required" });
+      case !color:
+        return res.status(500).send({ error: "color is Required" });
+      case !category:
+        return res.status(500).send({ error: "category is Required" });
+
       case photo && photo.size > 1000000:
         return res
           .status(500)
@@ -226,9 +289,9 @@ export const productListController = async (req, res) => {
 // filters
 export const productFiltersController = async (req, res) => {
   try {
-    const {  radio } = req.body;
+    const { checked, radio } = req.body;
     let args = {};
-    
+    if (checked.length > 0) args.category = checked;
     if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] };
     const products = await productModel.find(args);
     res.status(200).send({
@@ -271,48 +334,91 @@ export const realtedProductController = async (req, res) => {
   }
 };
 
-
 //productCategoryController
-export const productCategoryController = async(req, res)=>{
-  try{
-    const category = await categoryModal.findOne({ slug: req.params.slug});
+export const productCategoryController = async (req, res) => {
+  try {
+    const category = await categoryModal.findOne({ slug: req.params.slug });
     const products = await productModel.find({ category }).populate("category");
 
     res.status(200).send({
-      success:true,
+      success: true,
       category,
       products,
     });
-
-  }catch(error){
+  } catch (error) {
     console.log(error);
     res.status(500).send({
-      success:false,
-      message:"Error in productCategory",
-      error
-    })
+      success: false,
+      message: "Error in productCategory",
+      error,
+    });
   }
-}
+};
+
+//productColorController
+export const productColorController = async (req, res) => {
+  try {
+    const color = await colorModel.findOne({ slug: req.params.slug });
+
+    const products = await productModel.find({ color }).populate("color");
+
+    res.status(200).send({
+      success: true,
+      color,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in product Size",
+      error,
+    });
+  }
+};
+
+//productSizeController
+export const productSizeController = async (req, res) => {
+  try {
+    const size = await sizeModel.findOne({ slug: req.params.slug });
+
+    const products = await productModel.find({ size }).populate("size");
+
+    res.status(200).send({
+      success: true,
+      size,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in products Size",
+      error,
+    });
+  }
+};
+
 //searchProductController
-export const searchProductController = async(req, res)=>{
-  try{
-    const { keyword} = req.params;
+export const searchProductController = async (req, res) => {
+  try {
+    const { keyword } = req.params;
 
     const results = await productModel
-        .find({
-         $or:[
-          {name:{$regex:keyword, $options:"i"}},
-          {description:{$regex:keyword, $options:"i"}},
-         ],
-    }).select("-photo");
+      .find({
+        $or: [
+          { name: { $regex: keyword, $options: "i" } },
+          { description: { $regex: keyword, $options: "i" } },
+        ],
+      })
+      .select("-photo");
     res.json(results);
-
-  }catch(error){
-        console.log(error);
-        res.status(500).send({
-          success:false,
-          message:"Error in search product",
-          error,
-        })
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in search product",
+      error,
+    });
   }
-}
+};

@@ -32,6 +32,10 @@ import UserProfile from "./pages/User/UserProfile.jsx";
 import Shipping from "./pages/Shipping.jsx";
 import Search from "./pages/Search.jsx";
 import BestSeller from "./pages/Admin/BestSeller.jsx";
+import CreateSize from "./pages/Admin/CreateSize.jsx";
+import CreateColor from "./pages/Admin/CreateColor.jsx";
+import ColorProduct from "./pages/ColorProduct.jsx";
+import SizeProduct from "./pages/SizeProduct.jsx";
 
 function App() {
   return (
@@ -48,6 +52,8 @@ function App() {
         <Route path="/paymentsuccess" element={<PaymentSuccess />} />
 
         <Route path="/category/:slug" element={<CategoryProduct />} />
+        <Route path="/color/:slug" element={<ColorProduct />} />
+        <Route path="/size/:slug" element={<SizeProduct />} />
         <Route path="/product/:slug" element={<ProductDetails />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/search" element={<Search />} />
@@ -55,6 +61,8 @@ function App() {
         <Route path="/dashboard" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/create-category" element={<CreateCategory />} />
+          <Route path="admin/create-size" element={<CreateSize />} />
+          <Route path="admin/create-color" element={<CreateColor />} />
           <Route path="admin/create-product" element={<CreateProduct />} />
           <Route path="admin/products" element={<Products />} />
           <Route path="admin/seller" element={<BestSeller/>} />

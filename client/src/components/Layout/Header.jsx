@@ -11,10 +11,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCartTotal } from "../../features/cartSlice.jsx";
 import { useSearch } from "../../context/SearchContext.jsx";
 import axios from "axios";
+import useCategory from "../../hooks/useCategory.jsx";
+import useColor from "../../hooks/useColor.jsx";
+import useSize from "../../hooks/useSize.jsx";
+
 const Header = () => {
   const [auth, setAuth] = useAuth();
-  
   const [values, setValues] = useSearch();
+
+  const categories = useCategory();
+  const colors = useColor();
+  const sizes = useSize();
+ 
 
   const navigate = useNavigate();
 
@@ -113,86 +121,84 @@ const Header = () => {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
-              <ul className="navbar-nav m-auto mb-2 mb-lg-0 carpent-head">
-                <li className="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">
-                    Category
-                  </a>
-                  <div className="mega-box">
-                    <div className="content">
-                      <div className="row">
-                        <ul className="mega-links">
-                          <li>
-                            <a href="#">ShAGGY & FUR RUGS</a>
-                          </li>
-                          <hr />
-                          <li>
-                            <a href="#">IRANIA</a>
-                          </li>
-                          <hr />
-                          <li>
-                            <a href="#">Drop menu3</a>
-                          </li>
-                          <hr />
-                          <li>
-                            <a href="#">Drop menu4</a>
-                          </li>
-                        </ul>
-                        <hr />
-                      </div>
-                      <div className="row">
-                        <ul className="mega-links">
-                          <li>
-                            <a href="#">ROUND</a>
-                          </li>
-                          <hr />
-                          <li>
-                            <a href="#">RUNNER</a>
-                          </li>
-                          <hr />
-                          <li>
-                            <a href="#">ORIENTAL RUG</a>
-                          </li>
-                          <hr />
-                          <li>
-                            <a href="#">JUTE RUG</a>
-                          </li>
-                        </ul>
-                        <hr />
-                      </div>
-
-                      <div className="row">
-                        <ul className="mega-links">
-                          <li>
-                            <a href="#">TRANSITION</a>
-                          </li>
-                          <hr />
-                          <li>
-                            <a href="#">RUG</a>
-                          </li>
-                          <hr />
-                          <li>
-                            <a href="#">ABSTRUCT</a>
-                          </li>
-                          <hr />
-                          <li>
-                            <a href="#">HAND WOMEN</a>
-                          </li>
-                          <hr />
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+              <ul className="navbar-nav m-auto mb-2 mb-lg-0 carpent-head ">
+                <li className="nav-item dropdown">
+                  <Link
+                    className="nav-link dropdown-toggle text-uppercase "
+                    to={"#"}
+                    data-bs-toggle="dropdown"
+                  >
+                    Categories
+                  </Link>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <Link className="dropdown-item" to={"/categories"}>
+                        All Categories
+                      </Link>
+                    </li>
+                    {categories?.map((c) => (
+                      <li>
+                        <Link
+                          className="dropdown-item"
+                          to={`/category/${c.slug}`}
+                        >
+                          {c.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">
+                <li className="nav-item dropdown">
+                  <Link
+                    className="nav-link dropdown-toggle text-uppercase "
+                    to={"#"}
+                    data-bs-toggle="dropdown"
+                  >
                     Color
-                  </a>
+                  </Link>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <Link className="dropdown-item" to={"/colors"}>
+                        All Color
+                      </Link>
+                    </li>
+                    {colors?.map((cl) => (
+                      <li>
+                        <Link
+                          className="dropdown-item"
+                          to={`/color/${cl.slug}`}
+                        >
+                          {cl.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">
-                    Size
-                  </a>
+                <li className="nav-item dropdown">
+                  <Link
+                    className="nav-link dropdown-toggle text-uppercase "
+                    to={"#"}
+                    data-bs-toggle="dropdown"
+                  >
+                    Sizes
+                  </Link>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <Link className="dropdown-item" to={"/sizes"}>
+                        All Sizes
+                      </Link>
+                    </li>
+                    {sizes?.map((si) => (
+                      <li>
+                        <Link
+                          className="dropdown-item"
+                          to={`/size/${si.slug}`}
+                        >
+                          {si.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="#">

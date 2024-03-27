@@ -8,6 +8,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
 
   //get all cat
   const getAllCategory = async () => {
@@ -25,7 +26,7 @@ const Home = () => {
     getAllCategory();
   }, []);
 
-  const [products, setProducts] = useState([]);
+  
   //getall products
   const getAllProducts = async () => {
     try {

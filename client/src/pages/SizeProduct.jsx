@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Layout from "../components/Layout/Layout.jsx";
+import Layout from "../components/Layout/Layout";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "../../public/css/CategoryProduct.css";
@@ -8,35 +8,19 @@ import { IoIosArrowForward } from "react-icons/io";
 import { FaRegCalendarCheck } from "react-icons/fa";
 import { Prices } from "../components/extraComponent/Prices.jsx";
 
-const CategoryProduct = () => {
+const SizeProduct = () => {
   const params = useParams();
   const navigate = useNavigate();
-
-  const [categories, setCategories] = useState([]);
-  const [checked, setChecked] = useState([]);
+  const [filterProducts, setFilterProducts] = useState([]);
   const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [size, setSize] = useState([]);
+  const [checked, setChecked] = useState([]);
 
   const [radio, setRadio] = useState([]);
 
-  useEffect(() => {
-     getPrductsByCat();
-  }, []);
-
-  const getPrductsByCat = async () => {
-    try {
-      const { data } = await axios.get(
-        `/api/v1/product/product-category/${params.slug}`
-      );
-
-      setProducts([...products, ...data?.products]);
-      setCategory(data?.category);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  //get all cat
+  
+  //get all categories
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get("/api/v1/category/get-category");
@@ -52,8 +36,33 @@ const CategoryProduct = () => {
     getAllCategory();
   }, []);
 
-  // filter by cat
-  const handleFilter = (value, id) => {
+  useEffect(() => {
+    if (params?.slug) getProductBySize();
+  }, [params?.slug]);
+
+  const getProductBySize = async () => {
+    try {
+      const { data } = await axios.get(
+        `/api/v1/product/product-size/${params.slug}`
+      );
+      console.log(data);
+      setProducts(data?.products);
+      setSize(data?.size);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (!radio.length) getProductBySize();
+  }, [radio.length]);
+
+  useEffect(() => {
+    if (radio.length) filterProduct();
+  }, [radio]);
+
+   // filter by cat
+   const handleFilter = (value, id) => {
     let all = [...checked];
     if (value) {
       all.push(id);
@@ -64,7 +73,7 @@ const CategoryProduct = () => {
   };
 
   useEffect(() => {
-    if (!checked.length || !radio.length) getPrductsByCat();
+    if (!checked.length || !radio.length) getProductBySize();
   }, [checked.length, radio.length]);
 
   useEffect(() => {
@@ -74,15 +83,16 @@ const CategoryProduct = () => {
   //get filterd product
   const filterProduct = async () => {
     try {
-      const { data } = await axios.post(`/api/v1/product/product-filters`, {
+      const { data } = await axios.post("/api/v1/product/product-filters", {
         checked,
         radio,
       });
-      setProducts(data?.products);
+      setFilterProducts(data?.products);
     } catch (error) {
       console.log(error);
     }
   };
+
 
   return (
     <>
@@ -100,7 +110,7 @@ const CategoryProduct = () => {
               </li>
               <li>
                 <NavLink to="#">
-                  {category?.name}
+                  {size?.name}
                   <span>
                     <IoIosArrowForward />
                   </span>
@@ -123,7 +133,7 @@ const CategoryProduct = () => {
 
         <div className="cat-banner">
           <div className="banner-content">
-            <h1 className="text-center"> {category?.name}</h1>
+            <h1 className="text-center"> {size?.name}</h1>
           </div>
           <div>
             <img src="../../public/images/Category/1.jpg" alt="banner" />
@@ -138,11 +148,11 @@ const CategoryProduct = () => {
         </div>
 
         <div className="container mt-3 ">
-          <h4 className="text-center">Category - {category?.name}</h4>
+          <h4 className="text-center">Size - {size?.name}</h4>
           <h6 className="text-center">{products?.length} result found </h6>
           <div className="categoryProduct">
-            <div className="">
-              <h4 className="font-bw-normal">Filter By Categories</h4>
+          <div className="">
+              <h4 className="text-center">Filter By Categories</h4>
               <div className="d-flex flex-column">
                 {categories?.map((c) => (
                   <Checkbox
@@ -247,4 +257,4 @@ const CategoryProduct = () => {
   );
 };
 
-export default CategoryProduct;
+export default SizeProduct;

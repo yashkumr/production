@@ -22,7 +22,6 @@ const Header = () => {
   const categories = useCategory();
   const colors = useColor();
   const sizes = useSize();
- 
 
   const navigate = useNavigate();
 
@@ -124,9 +123,10 @@ const Header = () => {
               <ul className="navbar-nav m-auto mb-2 mb-lg-0 carpent-head ">
                 <li className="nav-item dropdown">
                   <Link
-                    className="nav-link dropdown-toggle text-uppercase "
+                    className="nav-link dropdown-toggle t"
                     to={"#"}
                     data-bs-toggle="dropdown"
+                    style={{ fontSize: "14px" }}
                   >
                     Categories
                   </Link>
@@ -150,9 +150,10 @@ const Header = () => {
                 </li>
                 <li className="nav-item dropdown">
                   <Link
-                    className="nav-link dropdown-toggle text-uppercase "
+                    className="nav-link dropdown-toggle "
                     to={"#"}
                     data-bs-toggle="dropdown"
+                    style={{ fontSize: "14px" }}
                   >
                     Color
                   </Link>
@@ -176,9 +177,10 @@ const Header = () => {
                 </li>
                 <li className="nav-item dropdown">
                   <Link
-                    className="nav-link dropdown-toggle text-uppercase "
+                    className="nav-link dropdown-toggle "
                     to={"#"}
                     data-bs-toggle="dropdown"
+                    style={{ fontSize: "14px" }}
                   >
                     Sizes
                   </Link>
@@ -190,10 +192,7 @@ const Header = () => {
                     </li>
                     {sizes?.map((si) => (
                       <li>
-                        <Link
-                          className="dropdown-item"
-                          to={`/size/${si.slug}`}
-                        >
+                        <Link className="dropdown-item" to={`/size/${si.slug}`}>
                           {si.name}
                         </Link>
                       </li>

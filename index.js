@@ -40,9 +40,6 @@ app.get("/api/getkey", (req, res) => {
   res.status(200).json({ key: process.env.RAZORPAY_API_KEY });
 });
 
-app.use("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/dist/index.html"));
-});
 
 const PORT = process.env.PORT || 8080;
 

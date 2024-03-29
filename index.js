@@ -55,7 +55,7 @@ const PORT = process.env.PORT || 8080;
 // });
 
 app.use("*", function(req,res){
-  res.sendFile(path.join,(__dirname, "./client/dist/index.html");
+  res.sendFile(path.join,(__dirname, "./client/dist/index.html"));
 
 app.listen(PORT, () => {
   console.log(

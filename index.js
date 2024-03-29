@@ -12,10 +12,15 @@ import sizeRoute from "./routes/sizeRoute.js"
 import colorRoute from "./routes/colorRoute.js"
 import paymentRoutes from "./routes/paymentRoutes.js";
 import path from "path";
+import { fileURLToPath } from 'url';
 
 
 dotenv.config();
 connectDB();
+
+//Es module fix
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export const app = express();
 
@@ -24,6 +29,7 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "./client/dist")));
 
 
 //routing
@@ -47,6 +53,9 @@ const PORT = process.env.PORT || 8080;
 //   key_id: process.env.RAZORPAY_API_KEY,
 //   key_secret: process.env.RAZORPAY_API_SECRET,
 // });
+
+app.use("*", function(req,res){
+  res.sendFile(path.join,(__dirname, "./client/dist/index.html");
 
 app.listen(PORT, () => {
   console.log(

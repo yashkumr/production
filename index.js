@@ -12,13 +12,11 @@ import sizeRoute from "./routes/sizeRoute.js"
 import colorRoute from "./routes/colorRoute.js"
 import paymentRoutes from "./routes/paymentRoutes.js";
 import path from "path";
-import { fileURLToPath } from "url";
+
 
 dotenv.config();
 connectDB();
-//ES module fix
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+
 export const app = express();
 
 //middleware
